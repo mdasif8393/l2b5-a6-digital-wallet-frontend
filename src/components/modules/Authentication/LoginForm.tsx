@@ -37,8 +37,8 @@ export function LoginForm({
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "admin@gmail.com",
+      password: "12345678",
     },
   });
   const onSubmit = async (data: z.infer<typeof loginSchema>) => {
@@ -47,27 +47,27 @@ export function LoginForm({
       password: data.password,
     };
     console.log(userInfo);
-    try {
-      // // const res = await login(userInfo).unwrap();
-      // if (res.success) {
-      //   toast.success("User logged in successfully");
-      //   navigate("/");
-      // }
-    } catch (err: any) {
-      // if (err.status === 401) {
-      //   toast.error("Your account is not verified");
-      //   // navigate user to /verify page with user email
-      //   navigate("/verify", { state: data.email });
-      // }
-      if (err?.data?.message === "password does not match") {
-        toast.error("Invalid Credentials");
-      }
-      if (err?.data?.message === "User is not verified") {
-        toast.error("Your account is not verified");
-        navigate("/verify", { state: data.email });
-      }
-      console.log(err);
-    }
+    // try {
+    //   // const res = await login(userInfo).unwrap();
+    //   if (res.success) {
+    //     toast.success("User logged in successfully");
+    //     navigate("/");
+    //   }
+    // } catch (err: any) {
+    //   if (err.status === 401) {
+    //     toast.error("Your account is not verified");
+    //     // navigate user to /verify page with user email
+    //     navigate("/verify", { state: data.email });
+    //   }
+    //   if (err?.data?.message === "password does not match") {
+    //     toast.error("Invalid Credentials");
+    //   }
+    //   if (err?.data?.message === "User is not verified") {
+    //     toast.error("Your account is not verified");
+    //     navigate("/verify", { state: data.email });
+    //   }
+    //   console.log(err);
+    // }
   };
 
   return (

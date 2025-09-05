@@ -1,6 +1,7 @@
 import LoginImage from "@/assets/images/digital wallet.jpg";
 import { Link } from "react-router";
 import Logo from "@/assets/icons/Logo";
+import { RegisterForm } from "@/components/modules/Authentication/RegisterForm";
 // import { RegisterForm } from "@/components/modules/Authentication/RegisterForm";
 
 export default function Register() {
@@ -20,7 +21,9 @@ export default function Register() {
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-xs">{/* <RegisterForm /> */}</div>
+          <div className="w-full max-w-xs">
+            <RegisterForm />
+          </div>
         </div>
       </div>
     </div>
