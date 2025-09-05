@@ -17,6 +17,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { toast } from "sonner";
 import Password from "@/components/Password";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 // make zod schema
 const registerSchema = z
@@ -32,6 +39,7 @@ const registerSchema = z
     email: z.email(),
     address: z.string(),
     phone: z.string(),
+    role: z.enum(["USER", "AGENT"]),
     password: z.string().min(8, {
       error: "Password is too short",
     }),
@@ -59,6 +67,7 @@ export function RegisterForm({
       email: "",
       address: "",
       phone: "",
+      role: "USER",
       password: "",
       confirmPassword: "",
     },
@@ -70,6 +79,7 @@ export function RegisterForm({
       email: data.email,
       address: data.address,
       phone: data.phone,
+      role: data.role,
       password: data.password,
     };
 
@@ -170,6 +180,33 @@ export function RegisterForm({
                       {...field}
                     />
                   </FormControl>
+                  <FormDescription className="sr-only">
+                    This is your public display name.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="role"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Role</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your role" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="USER">User</SelectItem>
+                      <SelectItem value="AGENT">Agent</SelectItem>
+                    </SelectContent>
+                  </Select>
                   <FormDescription className="sr-only">
                     This is your public display name.
                   </FormDescription>
