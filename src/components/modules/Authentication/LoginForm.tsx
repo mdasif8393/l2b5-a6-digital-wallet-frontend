@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { toast } from "sonner";
 import Password from "@/components/Password";
+import { useLoginMutation } from "@/redux/features/auth/auth.api";
 
 const loginSchema = z.object({
   email: z.email(),
@@ -30,8 +31,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
-  // call rtk query api to post register
-  // const [login] = useLoginMutation();
+  const [login] = useLoginMutation();
   const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -46,28 +46,28 @@ export function LoginForm({
       email: data.email,
       password: data.password,
     };
-    console.log(userInfo);
-    // try {
-    //   // const res = await login(userInfo).unwrap();
-    //   if (res.success) {
-    //     toast.success("User logged in successfully");
-    //     navigate("/");
-    //   }
-    // } catch (err: any) {
-    //   if (err.status === 401) {
-    //     toast.error("Your account is not verified");
-    //     // navigate user to /verify page with user email
-    //     navigate("/verify", { state: data.email });
-    //   }
-    //   if (err?.data?.message === "password does not match") {
-    //     toast.error("Invalid Credentials");
-    //   }
-    //   if (err?.data?.message === "User is not verified") {
-    //     toast.error("Your account is not verified");
-    //     navigate("/verify", { state: data.email });
-    //   }
-    //   console.log(err);
-    // }
+    try {
+      const res = await login(userInfo).unwrap();
+      console.log(res);
+      if (res.success) {
+        toast.success("User logged in successfully");
+        navigate("/");
+      }
+    } catch (err: any) {
+      // if (err.status === 401) {
+      //   toast.error("Your account is not verified");
+      //   // navigate user to /verify page with user email
+      //   navigate("/verify", { state: data.email });
+      // }
+      if (err?.data?.message === "Incorrect Password") {
+        toast.error("Invalid Credentials");
+      }
+      // if (err?.data?.message === "User is not verified") {
+      //   toast.error("Your account is not verified");
+      //   navigate("/verify", { state: data.email });
+      // }
+      console.log(err);
+    }
   };
 
   return (
