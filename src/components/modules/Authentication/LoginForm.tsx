@@ -50,7 +50,7 @@ export function LoginForm({
       const res = await login(userInfo).unwrap();
       console.log(res);
       if (res.success) {
-        toast.success("User logged in successfully");
+        toast.success("Logged in successfully");
         navigate("/");
       }
     } catch (err: any) {
