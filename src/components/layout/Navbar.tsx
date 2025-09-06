@@ -36,10 +36,10 @@ export default function Navbar() {
 
   const dispatch = useAppDispatch();
 
-  const handleLogout = () => {
-    logout(undefined);
+  const handleLogout = async () => {
+    await logout(undefined);
     dispatch(authApi.util.resetApiState());
-    toast.error("User logged out successfully");
+    toast.error("Logged out successfully");
   };
 
   return (
@@ -130,7 +130,11 @@ export default function Navbar() {
               <Link to="/login">Login</Link>
             </Button>
           )}
-          {data?.data?.email && <Button onClick={handleLogout}>Logout</Button>}
+          {data?.data?.email && (
+            <Button variant={"destructive"} onClick={handleLogout}>
+              Logout
+            </Button>
+          )}
           <ModeToggle />
         </div>
       </div>
