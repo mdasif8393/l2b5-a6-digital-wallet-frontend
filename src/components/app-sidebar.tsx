@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/sidebar";
 import { Link } from "react-router";
 import { adminSidebarItems } from "@/routes/adminSidebarItems";
+import { agentSidebarItems } from "@/routes/agentSidebarItems";
+import { userSidebarItems } from "@/routes/userSidebarItems";
 
 // This is sample data.
 const data = {
