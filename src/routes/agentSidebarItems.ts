@@ -1,10 +1,15 @@
-export const agentSidebarItems = [
+import WithdrawMoney from "@/components/modules/Agent/WithdrawMoney";
+import MyWallet from "@/components/modules/Users/MyWallet";
+import { ISidebarItem } from "@/components/types";
+
+export const agentSidebarItems: ISidebarItem[] = [
   {
     title: "Transaction",
     items: [
       {
         title: "Withdraw Money",
         url: "/agent/withdraw-money",
+        component: WithdrawMoney,
       },
     ],
   },
@@ -14,6 +19,7 @@ export const agentSidebarItems = [
       {
         title: "My Wallet",
         url: "/agent/my-wallet",
+        component: MyWallet,
       },
     ],
   },

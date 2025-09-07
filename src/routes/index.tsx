@@ -1,14 +1,13 @@
 import App from "@/App";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import AgentStatus from "@/components/modules/Admin/AgentStatus";
-import AllUsers from "@/components/modules/Admin/AllUsers";
-import WithdrawMoney from "@/components/modules/Agent/WithdrawMoney";
-import AddMoney from "@/components/modules/Users/AddMoney";
-import MyWallet from "@/components/modules/Users/MyWallet";
+import { generateRoutes } from "@/components/utils/generateRoutes";
 import About from "@/pages/About";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import { createBrowserRouter } from "react-router";
+import { adminSidebarItems } from "./adminSidebarItems";
+import { agentSidebarItems } from "./agentSidebarItems";
+import { userSidebarItems } from "./userSidebarItems";
 
 export const router = createBrowserRouter([
   {
@@ -24,44 +23,17 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     Component: DashboardLayout,
-    children: [
-      {
-        path: "all-users",
-        Component: AllUsers,
-      },
-      {
-        path: "agent-status",
-        Component: AgentStatus,
-      },
-    ],
+    children: [...generateRoutes(adminSidebarItems)],
   },
   {
     path: "/agent",
     Component: DashboardLayout,
-    children: [
-      {
-        path: "withdraw-money",
-        Component: WithdrawMoney,
-      },
-      {
-        path: "my-wallet",
-        Component: MyWallet,
-      },
-    ],
+    children: [...generateRoutes(agentSidebarItems)],
   },
   {
     path: "/user",
     Component: DashboardLayout,
-    children: [
-      {
-        path: "add-money",
-        Component: AddMoney,
-      },
-      {
-        path: "my-wallet",
-        Component: MyWallet,
-      },
-    ],
+    children: [...generateRoutes(userSidebarItems)],
   },
   {
     path: "/login",
