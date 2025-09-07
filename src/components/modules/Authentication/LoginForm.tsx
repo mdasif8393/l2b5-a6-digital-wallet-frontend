@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -48,10 +49,11 @@ export function LoginForm({
     };
     try {
       const res = await login(userInfo).unwrap();
-      console.log(res);
+
       if (res.success) {
         toast.success("Logged in successfully");
         navigate("/");
+        // navigate(`/${(res?.data?.user?.role).toLowerCase()}`);
       }
     } catch (err: any) {
       // if (err.status === 401) {
