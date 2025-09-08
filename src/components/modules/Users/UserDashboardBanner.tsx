@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "../../ui/badge";
 import { useGetMyWalletQuery } from "@/redux/features/wallet/wallet.api";
+import { UserAddMoneyModal } from "./UserAddMoneyModal";
+import { UserSendMoneyModal } from "./UserSendMoneyModal";
+import { UserCashOutModal } from "./UserCashOutModal";
 
 export default function UserDashboardBanner() {
   const { data: walletData } = useGetMyWalletQuery(undefined);
@@ -15,9 +18,9 @@ export default function UserDashboardBanner() {
             {walletBalance?.toFixed(2)}
           </Badge>
         </div>
-        <Button>Add Money</Button>
-        <Button>Send Money</Button>
-        <Button>Cash Out</Button>
+        <UserAddMoneyModal />
+        <UserSendMoneyModal />
+        <UserCashOutModal />
       </div>
     </div>
   );
