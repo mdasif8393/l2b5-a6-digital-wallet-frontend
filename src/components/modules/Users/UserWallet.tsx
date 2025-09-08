@@ -1,23 +1,81 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import UserDashboardBanner from "@/components/modules/Users/UserDashboardBanner";
 import { useGetMyTransactionQuery } from "@/redux/features/transaction/transaction.api";
 import { useGetMyWalletQuery } from "@/redux/features/wallet/wallet.api";
+import { format } from "date-fns";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import Loading from "@/components/layout/Loading";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 
 export default function UserWallet() {
-  const { data: walletData } = useGetMyWalletQuery(undefined);
-  console.log(walletData?.data);
+  // const { data: walletData } = useGetMyWalletQuery(undefined);
+  // console.log(walletData?.data);
 
-  const { data: transactionData } = useGetMyTransactionQuery({
-    limit: 5,
-    fields: "-createdAt",
+  const { data, isLoading } = useGetMyTransactionQuery({
+    limit: 10,
+    sort: "-createdAt",
   });
-  console.log(transactionData);
+
+  console.log(data);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
       <div>
         <UserDashboardBanner />
       </div>
-      <div></div>
+      <div className="mt-5">
+        <div className="flex justify-center">
+          <small className=" text-gray-400">
+            A list of our Transactions history
+          </small>
+        </div>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Transaction id</TableHead>
+              <TableHead>Amount</TableHead>
+              <TableHead>Type</TableHead>
+              <TableHead>Date</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {data?.data?.map((item: any) => (
+              <TableRow key={item._id}>
+                <TableCell className="font-medium">
+                  {item.transactionId}
+                </TableCell>
+                <TableCell className="font-medium">
+                  <span className="font-extrabold">&#2547; </span>
+                  {item.amount}
+                </TableCell>
+                <TableCell className="font-medium">{item.type}</TableCell>
+                <TableCell className="font-medium">
+                  {item.createdAt.split("T")[0]}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <div className="flex justify-center">
+          <Link to="/user/transactions">
+            <Button variant="link" className="hover:cursor-pointer">
+              See All Transactions
+            </Button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
