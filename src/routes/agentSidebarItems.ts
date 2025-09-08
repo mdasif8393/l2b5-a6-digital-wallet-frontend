@@ -1,5 +1,5 @@
 import WithdrawMoney from "@/components/modules/Agent/WithdrawMoney";
-import MyWallet from "@/components/modules/Users/MyWallet";
+import MyWallet from "@/components/modules/Users/UserWallet";
 import { ISidebarItem } from "@/components/types";
 
 export const agentSidebarItems: ISidebarItem[] = [
