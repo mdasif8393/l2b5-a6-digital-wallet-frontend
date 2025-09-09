@@ -88,7 +88,6 @@ export function UserSendMoneyModal() {
       },
       receiverId: data?.receiverId,
     };
-    console.log(sendMoneyInfo);
     try {
       const res = await sendMoney(sendMoneyInfo).unwrap();
       if (res.success) {
