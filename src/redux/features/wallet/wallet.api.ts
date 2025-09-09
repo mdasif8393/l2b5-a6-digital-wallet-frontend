@@ -9,6 +9,14 @@ export const walletApi = baseApi.injectEndpoints({
       }),
       providesTags: ["WALLET"],
     }),
+    addMoney: builder.mutation({
+      query: (amount) => ({
+        url: "/wallet/add-money",
+        method: "POST",
+        data: amount,
+      }),
+      invalidatesTags: ["TRANSACTION", "WALLET"],
+    }),
   }),
 });
 
