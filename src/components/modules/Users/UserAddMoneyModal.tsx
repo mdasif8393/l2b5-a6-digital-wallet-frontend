@@ -52,11 +52,10 @@ export function UserAddMoneyModal() {
       const res = await addMoney(amountData).unwrap();
       console.log(res);
       if (res?.success) {
-        toast.success("Division added successfully");
+        toast.success("Money added successfully");
         setOpen(false);
       }
     } catch (err) {
-      console.log(err);
       if (err && typeof err === "object" && "status" in err) {
         const error = err as { status: number };
         if (error.status === 400) {
