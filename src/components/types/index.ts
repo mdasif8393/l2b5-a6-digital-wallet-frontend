@@ -10,3 +10,16 @@ export interface ISidebarItem {
 }
 
 export type TRole = "AGENT" | "ADMIN" | "USER";
+
+export interface IResponse<T> {
+  success: boolean;
+  message: string;
+  statusCode: number;
+  data: T;
+  // meta: {
+  //   page: number;
+  //   limit: number;
+  //   total: number;
+  //   totalPage: number;
+  // };
+}

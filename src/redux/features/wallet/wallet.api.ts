@@ -1,3 +1,5 @@
+import { IResponse } from "@/components/types";
+import { IAddMoney } from "@/components/types/wallet.type";
 import { baseApi } from "@/redux/baseApi";
 
 export const walletApi = baseApi.injectEndpoints({
@@ -9,7 +11,7 @@ export const walletApi = baseApi.injectEndpoints({
       }),
       providesTags: ["WALLET"],
     }),
-    addMoney: builder.mutation({
+    addMoney: builder.mutation<IResponse<null>, IAddMoney>({
       query: (amount) => ({
         url: "/wallet/add-money",
         method: "POST",
@@ -20,4 +22,4 @@ export const walletApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetMyWalletQuery } = walletApi;
+export const { useGetMyWalletQuery, useAddMoneyMutation } = walletApi;

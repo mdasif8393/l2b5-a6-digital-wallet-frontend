@@ -25,7 +25,6 @@ export default function UserWallet() {
     sort: "-createdAt",
   });
 
-  console.log(data);
   if (isLoading) {
     return <Loading />;
   }
@@ -38,7 +37,7 @@ export default function UserWallet() {
       <div className="mt-5">
         <div className="flex justify-center">
           <small className=" text-gray-400">
-            A list of our Transactions history
+            A list of our latest Transactions history
           </small>
         </div>
         <Table>
