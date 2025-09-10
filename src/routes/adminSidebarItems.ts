@@ -1,25 +1,42 @@
-import AgentStatus from "@/components/modules/Admin/AgentStatus";
-import AllUsers from "@/components/modules/Admin/AllUsers";
+import AdminManageAgents from "@/components/modules/Admin/AdminManageAgents";
+import AdminManageUsers from "@/components/modules/Admin/AdminManageUsers";
+import AdminTransactions from "@/components/modules/Admin/AdminTransactions";
+
 import { ISidebarItem } from "@/components/types";
 
 export const adminSidebarItems: ISidebarItem[] = [
   {
-    title: "Manage Users",
+    title: "Transactions Management",
     items: [
       {
-        title: "All Users",
-        url: "/admin/all-users",
-        component: AllUsers,
+        title: "Transactions",
+        url: "/admin/all-transactions-info",
+        component: AdminTransactions,
       },
     ],
   },
   {
-    title: "Manage Agents",
+    title: "Users Managements",
     items: [
       {
-        title: "Agent Status",
-        url: "/admin/agent-status",
-        component: AgentStatus,
+        title: "Users",
+        url: "/admin/manage-users",
+        component: AdminManageUsers,
+      },
+      {
+        title: "Agents",
+        url: "/admin/manage-agents",
+        component: AdminManageAgents,
+      },
+    ],
+  },
+  {
+    title: "Profile Management",
+    items: [
+      {
+        title: "Update Profile",
+        url: "/admin/update-admin",
+        component: AdminManageUsers,
       },
     ],
   },

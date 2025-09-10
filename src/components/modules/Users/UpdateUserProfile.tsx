@@ -161,7 +161,7 @@ export default function UpdateUserProfile() {
               />
 
               <Button type="submit" className="w-full">
-                Register
+                Update
               </Button>
             </form>
           </Form>
