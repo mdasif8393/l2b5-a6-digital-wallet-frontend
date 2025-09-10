@@ -112,7 +112,7 @@ export default function AgentWithdrawMoneyModal() {
       <form>
         <DialogTrigger asChild>
           <Button variant="outline" className="hover:cursor-pointer">
-            Withdraw Money
+            Withdraw Money From User
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">

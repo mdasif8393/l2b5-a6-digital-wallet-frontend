@@ -62,7 +62,7 @@ export default function AgentWallet() {
           </TableBody>
         </Table>
         <div className="flex justify-center">
-          <Link to="/user/transactions">
+          <Link to="/agent/transactions">
             <Button variant="link" className="hover:cursor-pointer">
               See All Transactions
             </Button>

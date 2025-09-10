@@ -107,7 +107,7 @@ export default function AgentCashInModal() {
       <form>
         <DialogTrigger asChild>
           <Button variant="outline" className="hover:cursor-pointer">
-            Cash In
+            Cash In to User
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
