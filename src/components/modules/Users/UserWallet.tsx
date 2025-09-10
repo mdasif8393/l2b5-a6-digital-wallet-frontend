@@ -43,10 +43,10 @@ export default function UserWallet() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Transaction id</TableHead>
-              <TableHead>Amount</TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead>Date</TableHead>
+              <TableHead className="text-red-500">Transaction id</TableHead>
+              <TableHead className="text-red-500">Amount</TableHead>
+              <TableHead className="text-red-500">Type</TableHead>
+              <TableHead className="text-red-500">Date</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
