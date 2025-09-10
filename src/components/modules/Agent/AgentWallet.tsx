@@ -19,7 +19,6 @@ export default function AgentWallet() {
     sort: "-createdAt",
   });
 
-  console.log(data);
   if (isLoading) {
     return <Loading />;
   }

@@ -95,7 +95,7 @@ export default function AgentWithdrawMoneyModal() {
     try {
       const res = await withdrawMoney(withDrawMoneyInfo).unwrap();
       if (res.success) {
-        toast.success("Withdraw money successfully");
+        toast.success("Withdraw money successfully from user wallet");
         setOpen(false);
       }
     } catch (err) {

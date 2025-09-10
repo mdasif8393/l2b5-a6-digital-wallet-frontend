@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useGetMyWalletQuery } from "@/redux/features/wallet/wallet.api";
 import AgentWithdrawMoneyModal from "./AgentWithdrawMoneyModal";
+import AgentCashInModal from "./AgentCashInModal";
 
 export default function AgentDashboardBanner() {
   const { data: walletData } = useGetMyWalletQuery(undefined);
@@ -15,6 +16,7 @@ export default function AgentDashboardBanner() {
             <span>{walletBalance?.toFixed(2)}</span>
           </Badge>
         </div>
+        <AgentCashInModal />
         <AgentWithdrawMoneyModal />
       </div>
     </div>
