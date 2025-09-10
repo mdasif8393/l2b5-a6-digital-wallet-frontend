@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import UserDashboardBanner from "@/components/modules/Users/UserDashboardBanner";
+import Loading from "@/components/layout/Loading";
 import { useGetMyTransactionQuery } from "@/redux/features/transaction/transaction.api";
-
 import {
   Table,
   TableBody,
@@ -10,19 +9,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Loading from "@/components/layout/Loading";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
+import AgentDashboardBanner from "./AgentDashboardBanner";
 
-export default function UserWallet() {
-  // const { data: walletData } = useGetMyWalletQuery(undefined);
-  // console.log(walletData?.data);
-
+export default function AgentWallet() {
   const { data, isLoading } = useGetMyTransactionQuery({
     limit: 10,
     sort: "-createdAt",
   });
 
+  console.log(data);
   if (isLoading) {
     return <Loading />;
   }
@@ -30,7 +27,7 @@ export default function UserWallet() {
   return (
     <div>
       <div>
-        <UserDashboardBanner />
+        <AgentDashboardBanner />
       </div>
       <div className="mt-5">
         <div className="flex justify-center">

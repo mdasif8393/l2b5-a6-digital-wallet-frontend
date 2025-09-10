@@ -12,6 +12,7 @@ export const walletApi = baseApi.injectEndpoints({
       }),
       providesTags: ["WALLET"],
     }),
+    // user
     addMoney: builder.mutation<IResponse<null>, IAddMoney>({
       query: (amount) => ({
         url: "/wallet/add-money",
@@ -40,6 +41,27 @@ export const walletApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["TRANSACTION", "WALLET"],
     }),
+    // agent
+    cashIn: builder.mutation<IResponse<null>, ISendMoney>({
+      query: (params) => {
+        return {
+          url: `/wallet/cash-in/${params.receiverId}`,
+          method: "POST",
+          data: params.amountData,
+        };
+      },
+      invalidatesTags: ["TRANSACTION", "WALLET"],
+    }),
+    withdrawMoney: builder.mutation<IResponse<null>, ISendMoney>({
+      query: (params) => {
+        return {
+          url: `/wallet/withdraw-money/${params.receiverId}`,
+          method: "POST",
+          data: params.amountData,
+        };
+      },
+      invalidatesTags: ["TRANSACTION", "WALLET"],
+    }),
   }),
 });
 
@@ -48,4 +70,6 @@ export const {
   useAddMoneyMutation,
   useSendMoneyMutation,
   useCashOutMutation,
+  useCashInMutation,
+  useWithdrawMoneyMutation,
 } = walletApi;
