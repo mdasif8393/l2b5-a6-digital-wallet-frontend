@@ -25,7 +25,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRegisterMutation } from "@/redux/features/auth/auth.api";
-import Loading from "@/components/layout/Loading";
 
 // make zod schema
 const registerSchema = z
@@ -59,7 +58,7 @@ export function RegisterForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
-  const [register, isLoading] = useRegisterMutation();
+  const [register] = useRegisterMutation();
 
   const navigate = useNavigate();
 
